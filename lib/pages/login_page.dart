@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie21/bloc/cubit/auth_cubit.dart';
 // import 'package:google_fonts/google_fonts.dart';
 import 'package:movie21/widgets/forms/buttons/button.dart';
 import 'package:movie21/widgets/forms/textfields/qtextfield.dart';
@@ -13,6 +15,14 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  late final AuthCubit authCubit;
+
+  @override
+  void initState() {
+    authCubit = context.read<AuthCubit>();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,8 +49,18 @@ class _LoginPageState extends State<LoginPage> {
                 obscure: true,
                 suffixIcon: Icons.password,
               ),
-              QButton(
-                  label: "Sign In", sufixIcon: Icons.login, onPressed: () {}),
+              BlocBuilder<AuthCubit, AuthState>(
+                // jgn lupa buat BlocProvider di main dart
+                builder: (context, state) {
+                  return QButton(
+                      label: "Sign In",
+                      sufixIcon: Icons.login,
+                      onPressed: () {
+                        authCubit.loginCubit("a", "ab");
+                        print("ass 22");
+                      });
+                },
+              ),
               // Padding(
               //   padding: const EdgeInsets.symmetric(horizontal: 25),
               //   child: Container(

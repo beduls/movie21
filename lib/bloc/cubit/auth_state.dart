@@ -1,5 +1,4 @@
-import 'package:equatable/equatable.dart';
-import 'package:movie21/services/nginfoin/models/user_model.dart';
+part of 'auth_cubit.dart';
 
 class AuthState extends Equatable {
   final UserModel? userModel;

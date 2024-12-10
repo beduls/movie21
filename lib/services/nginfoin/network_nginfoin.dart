@@ -2,11 +2,11 @@ import 'package:dio/dio.dart';
 import 'package:movie21/services/nginfoin/network_exception.dart';
 import 'package:movie21/services/nginfoin/network_intercept.dart';
 
-class ApiNginfoin {
+class NetworkNginfoin {
   late final Dio dio;
   final requestTimeOut = 30; // 30 sec
 
-  ApiNginfoin() {
+  NetworkNginfoin() {
     final baseOptions = BaseOptions(
         baseUrl: 'https://nginfoin.my.id/public',
         connectTimeout: Duration(seconds: requestTimeOut),

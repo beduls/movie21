@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie21/bloc/cubit/auth_cubit.dart';
 import 'package:movie21/pages/login_page.dart';
+import 'package:movie21/utilities/injector.dart';
 import 'package:movie21/utilities/routes/route.dart';
 
-void main() {
+void main() async {
+  await setupInjector();
+
   runApp(const MyApp());
 }
 
@@ -12,15 +17,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return BlocProvider(
+      create: (context) => AuthCubit(),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: const LoginPage(title: 'Login'),
+        initialRoute: AppRoutes.splash,
+        routes: AppRoutes().routes5,
       ),
-      home: const LoginPage(title: 'Login'),
-      initialRoute: AppRoutes.splash,
-      routes: AppRoutes().routes5,
     );
   }
 }
