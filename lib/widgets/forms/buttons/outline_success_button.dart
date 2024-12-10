@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 // import 'package:hyper_ui/core.dart';
-import 'package:movie21/themes/theme_color.dart';
+import 'package:movie21/widgets/layouts/themes/theme_color.dart';
 
 class QOutlineSuccessButton extends StatelessWidget {
   const QOutlineSuccessButton({

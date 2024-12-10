@@ -30,6 +30,19 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  # state management
+  flutter_bloc: ^8.1.6
+  equatable: ^2.0.7
+  # api plugin
+  dio: ^5.7.0
+  shared_preferences: ^2.3.3
+  # format number
+  intl: ^0.20.1
+  # local storage
+  hive: ^2.2.3
+  path_provider: ^2.0.12
+  get_it: ^8.0.2
+
 
 
   # The following adds the Cupertino Icons font to your application.
