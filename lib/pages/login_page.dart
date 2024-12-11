@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie21/bloc/cubit/auth_cubit.dart';
+import 'package:movie21/services/nginfoin/requests/login_request.dart';
 // import 'package:google_fonts/google_fonts.dart';
 import 'package:movie21/widgets/forms/buttons/button.dart';
 import 'package:movie21/widgets/forms/textfields/qtextfield.dart';
@@ -16,6 +17,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   late final AuthCubit authCubit;
+  final controllerEmail = TextEditingController();
+  final controllerPassword = TextEditingController();
 
   @override
   void initState() {
@@ -43,11 +46,17 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(
                 height: 20,
               ),
-              const QTextField(label: "Email", suffixIcon: Icons.email),
-              const QTextField(
+              QTextField(
+                  label: "Email",
+                  suffixIcon: Icons.email,
+                  textEditingController: controllerEmail,
+                  onChanged: (value) {}),
+              QTextField(
                 label: "Password",
+                onChanged: (value) {},
                 obscure: true,
                 suffixIcon: Icons.password,
+                textEditingController: controllerPassword,
               ),
               BlocBuilder<AuthCubit, AuthState>(
                 // jgn lupa buat BlocProvider di main dart
@@ -56,8 +65,8 @@ class _LoginPageState extends State<LoginPage> {
                       label: "Sign In",
                       sufixIcon: Icons.login,
                       onPressed: () {
-                        authCubit.loginCubit("a", "ab");
-                        print("ass 22");
+                        authCubit.loginCubit(
+                            controllerEmail.text, controllerPassword.text);
                       });
                 },
               ),

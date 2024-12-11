@@ -14,10 +14,9 @@ class AuthCubit extends Cubit<AuthState> {
 
     try {
       final response = await LoginRequest().postLogin(email, password);
-      print(response);
+      // print(response);
       emit(state.copyWith(loading: false, errMessage: response?.accessToken));
     } catch (err) {
-      print(err.toString());
       emit(state.copyWith(loading: false, errMessage: err.toString()));
     }
   }

@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 
 class QTextField extends StatefulWidget {
-  const QTextField({
-    required this.label,
-    this.onChanged,
-    super.key,
-    this.id,
-    this.value,
-    this.validator,
-    this.hint,
-    this.helper,
-    this.maxLength,
-    this.onSubmitted,
-    this.obscure = false,
-    this.enabled = true,
-    this.prefixIcon,
-    this.suffixIcon,
-    this.margin,
-  });
+  const QTextField(
+      {required this.label,
+      this.onChanged,
+      super.key,
+      this.id,
+      this.value,
+      this.validator,
+      this.hint,
+      this.helper,
+      this.maxLength,
+      this.onSubmitted,
+      this.obscure = false,
+      this.enabled = true,
+      this.prefixIcon,
+      this.suffixIcon,
+      this.margin,
+      this.textEditingController});
   final String? id;
   final String label;
   final String? value;
@@ -32,31 +32,32 @@ class QTextField extends StatefulWidget {
   final Function(String)? onChanged;
   final Function(String)? onSubmitted;
   final double? margin;
+  final TextEditingController? textEditingController;
 
   @override
   State<QTextField> createState() => _QTextFieldState();
 }
 
 class _QTextFieldState extends State<QTextField> {
-  TextEditingController textEditingController = TextEditingController();
+  // TextEditingController textEditingController = TextEditingController();
 
   @override
   void initState() {
-    textEditingController.text = widget.value ?? '';
+    // textEditingController.text = widget.value ?? '';
     super.initState();
   }
 
-  String getValue() {
-    return textEditingController.text;
-  }
+  // String getValue() {
+  //   return textEditingController.text;
+  // }
 
-  setValue(value) {
-    textEditingController.text = value;
-  }
+  // setValue(value) {
+  //   textEditingController.text = value;
+  // }
 
-  resetValue() {
-    textEditingController.text = '';
-  }
+  // resetValue() {
+  //   textEditingController.text = '';
+  // }
 
   focus() {
     focusNode.requestFocus();
@@ -78,7 +79,8 @@ class _QTextFieldState extends State<QTextField> {
         ),
         child: TextFormField(
           enabled: widget.enabled,
-          controller: textEditingController,
+          // controller: textEditingController,
+          controller: widget.textEditingController,
           focusNode: focusNode,
           validator: widget.validator,
           maxLength: widget.maxLength,

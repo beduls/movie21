@@ -12,7 +12,10 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 1), () {
-      Navigator.pushReplacementNamed(context, AppRoutes.login);
+      if (context.mounted) {
+        // ignore: use_build_context_synchronously
+        Navigator.pushReplacementNamed(context, AppRoutes.login);
+      }
     });
     super.initState();
   }
