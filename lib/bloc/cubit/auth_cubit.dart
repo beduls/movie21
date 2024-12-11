@@ -9,13 +9,14 @@ part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   late final AuthStorage authStorage;
-  AuthCubit(this.authStorage) : super(const AuthState());
+  late final LoginRequest loginRequest;
+  AuthCubit(this.authStorage, this.loginRequest) : super(const AuthState());
 
   Future<void> loginCubit(String email, String password) async {
     emit(state.copyWith(loading: true, isLoggedIn: false));
 
     try {
-      final response = await LoginRequest().postLogin(email, password);
+      final response = await loginRequest.postLogin(email, password);
       emit(state.copyWith(
           userModel: response?.user,
           loading: false,

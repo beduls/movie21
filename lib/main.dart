@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie21/bloc/cubit/auth_cubit.dart';
 import 'package:movie21/pages/login_page.dart';
+import 'package:movie21/services/nginfoin/requests/login_request.dart';
 import 'package:movie21/utilities/injector.dart';
 import 'package:movie21/utilities/routes/route.dart';
 import 'package:movie21/utilities/storeages/auth_storage.dart';
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AuthCubit(getIt.get<AuthStorage>()),
+      create: (context) =>
+          AuthCubit(getIt.get<AuthStorage>(), getIt.get<LoginRequest>()),
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(

@@ -1,12 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:movie21/services/nginfoin/network_exception.dart';
 import 'package:movie21/services/nginfoin/network_intercept.dart';
+import 'package:movie21/utilities/storeages/auth_storage.dart';
 
 class NetworkNginfoin {
   late final Dio dio;
   final requestTimeOut = 30; // 30 sec
+  late final AuthStorage authStorage;
 
-  NetworkNginfoin() {
+  NetworkNginfoin(this.authStorage) {
     final baseOptions = BaseOptions(
         baseUrl: 'https://nginfoin.my.id/public',
         connectTimeout: Duration(seconds: requestTimeOut),
