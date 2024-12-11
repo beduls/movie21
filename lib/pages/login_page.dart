@@ -59,8 +59,8 @@ class _LoginPageState extends State<LoginPage> {
           // print("kalau true1  ${curr.isLoggedIn}");
           return true;
         }
-        print("prev ${prev.errMessage}");
-        print("curr ${curr.errMessage}");
+        // print("prev ${prev.errMessage}");
+        // print("curr ${curr.errMessage}");
         // print("curr ${curr.isLoggedIn}");
         return false;
         // Navigator.pushReplacementNamed(context, AppRoutes.main);

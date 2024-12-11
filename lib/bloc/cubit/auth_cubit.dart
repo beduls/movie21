@@ -24,5 +24,12 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  Future<void> logoutCubit() async {}
+  Future<void> logoutCubit() async {
+    // print('as');
+    emit(state.copyWith(
+      userModel: null,
+      isLoggedIn: false,
+    ));
+    print("login gak = ${state.isLoggedIn}");
+  }
 }

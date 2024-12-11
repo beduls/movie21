@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie21/bloc/cubit/auth_cubit.dart';
+import 'package:movie21/utilities/routes/route.dart';
 import 'package:movie21/widgets/forms/buttons/button.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -23,9 +24,12 @@ class _ProfilePageState extends State<ProfilePage> {
             children: [
               Text(state.userModel!.email.toString()),
               QButton(
-                  label: "Logout",
-                  onPressed: () {
-                    print('s');
+                  label: "Logout 2",
+                  onPressed: () async {
+                    await context.read<AuthCubit>().logoutCubit();
+                    if (context.mounted) {
+                      Navigator.pushReplacementNamed(context, AppRoutes.splash);
+                    }
                   })
             ],
           );
