@@ -36,7 +36,8 @@ class AuthCubit extends Cubit<AuthState> {
     if (token?.isEmpty ?? true) {
       return false;
     }
-    emit(state.copyWith(loading: false, userModel: user5, isLoggedIn: true));
+    emit(state.copyWith(
+        loading: false, userModel: user5, isLoggedIn: true, token: token));
     return true;
   }
 

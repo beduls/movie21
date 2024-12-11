@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         ),
         home: const LoginPage(title: 'Login'),
         initialRoute: AppRoutes.splash,
-        routes: AppRoutes().routes5,
+        routes: routes5,
       ),
     );
   }

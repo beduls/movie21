@@ -66,7 +66,7 @@ class _LoginPageState extends State<LoginPage> {
         // Navigator.pushReplacementNamed(context, AppRoutes.main);
       },
       child: Scaffold(
-        backgroundColor: Colors.green[300],
+        backgroundColor: Colors.white,
         body: SafeArea(
           child: Center(
             child: Column(

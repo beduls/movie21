@@ -74,7 +74,7 @@ class _QTextFieldState extends State<QTextField> {
         margin: EdgeInsets.only(bottom: widget.margin ?? 20),
         decoration: BoxDecoration(
           color: Colors.grey[200],
-          border: Border.all(color: Colors.white),
+          border: Border.all(color: Colors.black, width: 3),
           borderRadius: BorderRadius.circular(12),
         ),
         child: TextFormField(

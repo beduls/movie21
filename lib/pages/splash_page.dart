@@ -29,7 +29,8 @@ class _SplashPageState extends State<SplashPage> {
     if (mounted) {
       final isLogin = context.read<AuthCubit>().isLoggedIn();
       if (isLogin == true) {
-        Navigator.pushReplacementNamed(context, AppRoutes.profile);
+        Navigator.pushReplacementNamed(context, AppRoutes.main);
+        // Navigator.pushReplacementNamed(context, AppRoutes.profile);
       } else {
         // Navigator.pushReplacementNamed(context, AppRoutes.login);
         Navigator.pushNamedAndRemoveUntil(
@@ -40,12 +41,15 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          const Text("Welcome"),
-          QButton(label: "Log Out", onPressed: () {})
-        ],
+    return const Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Welcome"),
+            Text("Welcome2"),
+          ],
+        ),
       ),
     );
   }

@@ -23,7 +23,8 @@ class _ProfilePageState extends State<ProfilePage> {
           return Column(
             children: [
               Text(state.userModel!.email.toString()),
-              Text(state.token.toString()),
+              Text('toke : ${state.token}'),
+              Text('isLogin ${state.isLoggedIn}'),
               QButton(
                   label: "Logout 22A",
                   onPressed: () async {
