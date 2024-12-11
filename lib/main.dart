@@ -6,6 +6,8 @@ import 'package:movie21/utilities/injector.dart';
 import 'package:movie21/utilities/routes/route.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   await setupInjector();
 
   runApp(const MyApp());
