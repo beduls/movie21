@@ -3,11 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie21/services/nginfoin/models/user_model.dart';
 // import 'package:movie21/services/nginfoin/network_nginfoin.dart';
 import 'package:movie21/services/nginfoin/requests/login_request.dart';
+import 'package:movie21/utilities/storeages/auth_storage.dart';
 
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
-  AuthCubit() : super(const AuthState());
+  late final AuthStorage authStorage;
+  AuthCubit(this.authStorage) : super(const AuthState());
 
   Future<void> loginCubit(String email, String password) async {
     emit(state.copyWith(loading: true, isLoggedIn: false));
@@ -19,17 +21,29 @@ class AuthCubit extends Cubit<AuthState> {
           loading: false,
           isLoggedIn: true,
           errMessage: ""));
+      await authStorage.setToken(response!.accessToken.toString());
+      await authStorage.setUser(response.user);
     } catch (err) {
       emit(state.copyWith(loading: false, errMessage: "$err"));
     }
   }
 
+  bool isLoggedIn() {
+    final token = authStorage.getToken();
+    final user5 = authStorage.getUser();
+    if (token?.isEmpty ?? true) {
+      return false;
+    }
+    emit(state.copyWith(loading: false, userModel: user5, isLoggedIn: true));
+    return true;
+  }
+
   Future<void> logoutCubit() async {
-    // print('as');
     emit(state.copyWith(
       userModel: null,
       isLoggedIn: false,
     ));
-    print("login gak = ${state.isLoggedIn}");
+    await authStorage.clearBox();
+    // print("login gak = ${state.isLoggedIn}");
   }
 }

@@ -37,7 +37,7 @@ class AuthStorage {
     return null;
   }
 
-  Future<void> clear() async {
+  Future<void> clearBox() async {
     await box.delete('token');
     await box.delete('name');
     await box.delete('email');

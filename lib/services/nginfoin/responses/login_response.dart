@@ -1,16 +1,16 @@
 import 'package:movie21/services/nginfoin/models/user_model.dart';
 
 class LoginResponse {
-  UserModel? user;
-  String? accessToken;
-  String? tokenType;
-  int? expiresIn;
+  UserModel user;
+  String accessToken;
+  String tokenType;
+  int expiresIn;
 
   LoginResponse({
-    this.user,
-    this.accessToken,
-    this.tokenType,
-    this.expiresIn,
+    required this.user,
+    required this.accessToken,
+    required this.tokenType,
+    required this.expiresIn,
   });
 
   factory LoginResponse.fromJson(Map<String, dynamic> json) => LoginResponse(
