@@ -10,14 +10,19 @@ class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(const AuthState());
 
   Future<void> loginCubit(String email, String password) async {
-    emit(state.copyWith(loading: true));
+    emit(state.copyWith(loading: true, isLoggedIn: false));
 
     try {
       final response = await LoginRequest().postLogin(email, password);
-      // print(response);
-      emit(state.copyWith(loading: false, errMessage: response?.accessToken));
+      emit(state.copyWith(
+          userModel: response?.user,
+          loading: false,
+          isLoggedIn: true,
+          errMessage: ""));
     } catch (err) {
-      emit(state.copyWith(loading: false, errMessage: err.toString()));
+      emit(state.copyWith(loading: false, errMessage: "$err"));
     }
   }
+
+  Future<void> logoutCubit() async {}
 }

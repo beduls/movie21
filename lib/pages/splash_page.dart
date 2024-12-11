@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie21/utilities/routes/route.dart';
+import 'package:movie21/widgets/forms/buttons/button.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -22,8 +23,13 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: Text("Welcome")),
+    return Scaffold(
+      body: Column(
+        children: [
+          const Text("Welcome"),
+          QButton(label: "Log Out", onPressed: () {})
+        ],
+      ),
     );
   }
 }

@@ -43,7 +43,7 @@ class _QTextFieldState extends State<QTextField> {
 
   @override
   void initState() {
-    // textEditingController.text = widget.value ?? '';
+    widget.textEditingController?.text = widget.value ?? '';
     super.initState();
   }
 
