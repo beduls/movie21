@@ -76,7 +76,7 @@ class _LoginPageState extends State<LoginPage> {
                   height: 30,
                 ),
                 const Text(
-                  "LOGIN 2",
+                  "LOGIN",
                   // style: GoogleFonts.alfaSlabOne(fontSize: 30),
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 38),
                 ),

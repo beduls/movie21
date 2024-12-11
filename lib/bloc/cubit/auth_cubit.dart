@@ -21,6 +21,7 @@ class AuthCubit extends Cubit<AuthState> {
           userModel: response?.user,
           loading: false,
           isLoggedIn: true,
+          token: response?.accessToken,
           errMessage: ""));
       await authStorage.setToken(response!.accessToken.toString());
       await authStorage.setUser(response.user);
@@ -43,6 +44,7 @@ class AuthCubit extends Cubit<AuthState> {
     emit(state.copyWith(
       userModel: null,
       isLoggedIn: false,
+      token: "",
     ));
     await authStorage.clearBox();
     // print("login gak = ${state.isLoggedIn}");

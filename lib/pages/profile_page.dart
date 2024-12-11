@@ -23,8 +23,9 @@ class _ProfilePageState extends State<ProfilePage> {
           return Column(
             children: [
               Text(state.userModel!.email.toString()),
+              Text(state.token.toString()),
               QButton(
-                  label: "Logout 2",
+                  label: "Logout 22A",
                   onPressed: () async {
                     await context.read<AuthCubit>().logoutCubit();
                     if (context.mounted) {
