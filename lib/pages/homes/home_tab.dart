@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie21/bloc/cubit/products/cubit/product_cubit.dart';
 import 'package:movie21/bloc/cubit/products/cubit/product_state.dart';
 import 'package:movie21/utilities/helper.dart';
+// import 'package:movie21/utilities/helper.dart';
 import 'package:movie21/utilities/injector.dart';
 
 class HomeTab extends StatefulWidget {
@@ -32,19 +33,30 @@ class _HomeTabState extends State<HomeTab> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text('home'),
       ),
-      body: BlocBuilder<ProductCubit, ProductState>(
-        bloc: productCubit,
-        builder: (context, state) {
-          return ListView.separated(
-              itemBuilder: (context, index) => ListTile(
-                    title: Text('title2 $index'),
-                    subtitle: Text(state.products![index].name.toString()),
-                    trailing: Text(formatRupiah(state.products![index].price)),
-                  ),
-              separatorBuilder: (context, idx) => const Divider(),
-              itemCount: 10);
-        },
-      ),
+      body: Stack(children: [
+        BlocBuilder<ProductCubit, ProductState>(
+          bloc: productCubit,
+          builder: (context, state) {
+            if (state.loading) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            return RefreshIndicator(
+              onRefresh: () async {
+                await productCubit.loadData(1, 5);
+              },
+              child: ListView.separated(
+                itemCount: state.products?.length ?? 0,
+                itemBuilder: (context, index) => ListTile(
+                  title: Text(state.products![index].name.toString()),
+                  subtitle: Text(state.products![index].description.toString()),
+                  trailing: Text(formatRupiah(state.products![index].price)),
+                ),
+                separatorBuilder: (context, idx) => const Divider(),
+              ),
+            );
+          },
+        ),
+      ]),
     );
   }
 }

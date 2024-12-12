@@ -25,7 +25,7 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   void checkLogin() async {
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
     if (mounted) {
       final isLogin = context.read<AuthCubit>().isLoggedIn();
       if (isLogin == true) {
