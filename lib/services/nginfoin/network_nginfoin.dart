@@ -29,6 +29,18 @@ class NetworkNginfoin {
     };
   }
 
+  Future<Response> get({
+    required String url,
+    Map<String, dynamic>? queryParameters,
+  }) async {
+    final header = await headersRequest();
+    return await _safeFetch(() => dio.get(
+          url,
+          queryParameters: queryParameters ?? {},
+          options: Options(headers: header),
+        ));
+  }
+
   Future<Response> post({
     required String url,
     Map<String, dynamic>? data,

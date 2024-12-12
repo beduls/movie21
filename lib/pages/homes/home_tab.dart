@@ -19,7 +19,13 @@ class _HomeTabState extends State<HomeTab> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text('home'),
       ),
-      body: const Center(child: Text('home tab')),
+      body: ListView.separated(
+          itemBuilder: (context, index) => ListTile(
+                title: Text('title $index'),
+                subtitle: const Text('subtitle'),
+              ),
+          separatorBuilder: (context, idx) => const Divider(),
+          itemCount: 10),
     );
   }
 }
