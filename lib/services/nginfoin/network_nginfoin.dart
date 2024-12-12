@@ -21,7 +21,7 @@ class NetworkNginfoin {
   }
 
   Future<Map<String, dynamic>> headersRequest() async {
-    String? token;
+    final token = authStorage.getToken();
     return {
       'Content-Type': 'application/json',
       'Authorization': "Bearer $token",

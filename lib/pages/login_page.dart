@@ -50,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
                   ));
         }
         if (state.isLoggedIn == true) {
-          Navigator.pushReplacementNamed(context, AppRoutes.profile);
+          Navigator.pushReplacementNamed(context, AppRoutes.main);
         }
       },
       listenWhen: (prev, curr) {
