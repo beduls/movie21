@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie21/pages/homes/home_tab.dart';
-import 'package:movie21/pages/homes/profile_tabl.dart';
+import 'package:movie21/pages/homes/profile_tab.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie21/bloc/cubit/auth_cubit.dart';
 import 'package:movie21/utilities/routes/route.dart';
-import 'package:movie21/widgets/forms/buttons/button.dart';
+// import 'package:movie21/widgets/forms/buttons/button.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
